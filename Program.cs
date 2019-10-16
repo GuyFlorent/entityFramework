@@ -26,10 +26,21 @@ namespace entityFramework
                 
 
             var l = dbContext.Orders.Where(f => f.CustomerID == person.CustomerID);
-
+            int i = 1;
             foreach (var c in l)
             {
-                Console.WriteLine(c.OrderID+" "+c.ShippedDate);
+                //Console.WriteLine(i + " "+c.OrderID+" "+c.ShippedDate);
+
+                i++;
+            }
+
+            var listeOrders = dbContext.Customers.FirstOrDefault(f => f.ContactName == "Maria Anders").Orders.ToList();
+            int j = 1;
+            foreach (var d in listeOrders)
+            {
+                Console.WriteLine(j + " " + d.OrderID + " " + d.ShippedDate);
+
+                j++;
             }
         }
     }
