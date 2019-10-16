@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +55,171 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alphabetical_list_of_product.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category_Sales_for_1997.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Current_Product_List.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDemographic.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_and_Suppliers_by_City.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrderHist_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrdersDetail_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrdersOrders_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbNorthWind.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbNorthWind.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbNorthWind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbNorthWind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbNorthWind.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_Sales_by_Country_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders_Qry.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Detail.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Details_Extended.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Subtotal.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personne.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Above_Average_Price.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_by_Category.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Sales_for_1997.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesByCategory_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_by_Category.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_by_Year_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_Totals_by_Amount.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shipper.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Summary_of_Sales_by_Quarter.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Summary_of_Sales_by_Year.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ten_Most_Expensive_Products_Result.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Territory.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test.cs">
+      <DependentUpon>DbNorthWind.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="DbNorthWind.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbNorthWind.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbNorthWind.edmx.diagram">
+      <DependentUpon>DbNorthWind.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbNorthWind.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbNorthWind.Context.cs</LastGenOutput>
+      <DependentUpon>DbNorthWind.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbNorthWind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbNorthWind.edmx</DependentUpon>
+      <LastGenOutput>DbNorthWind.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
 </Project>
