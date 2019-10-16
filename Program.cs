@@ -42,6 +42,20 @@ namespace entityFramework
 
                 j++;
             }
+
+            /*Ajout d'une colonne dans customers grace au click droit dans sqlServer 
+             puis creation et ensuite actualisé sur mon IDE dur le fichier .edmx 
+             de entity et apres METTRE A JOUR LE MODELE puis sur terminer et la colonne est ajouter */
+
+            var nouv = dbContext.Customers.Where(f => f.Email != null);
+
+            int m = 1;
+            foreach (var o in nouv)
+            {
+                Console.WriteLine(m + " "+o.ContactName);
+
+                m++;
+            }
         }
     }
 }
