@@ -38,7 +38,7 @@ namespace entityFramework
             int j = 1;
             foreach (var d in listeOrders)
             {
-                Console.WriteLine(j + " " + d.OrderID + " " + d.ShippedDate);
+               // Console.WriteLine(j + " " + d.OrderID + " " + d.ShippedDate);
 
                 j++;
             }
@@ -52,9 +52,50 @@ namespace entityFramework
             int m = 1;
             foreach (var o in nouv)
             {
-                Console.WriteLine(m + " "+o.ContactName);
+                //Console.WriteLine(m + " "+o.ContactName);
 
                 m++;
+            }
+
+            //Assigner un email au Customer HILAA
+
+            var Updat = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "HILAA");
+            //Updat.Email = "GUY@Yaoo.de";
+           // dbContext.SaveChanges();
+
+            //Insérer un nouveau Customer
+
+            var Etoo = new Customer();
+            Etoo.CustomerID = "AAAAB";
+            Etoo.CompanyName = "Fils"; // toujours remplir les champs not null
+            Etoo.Address = "Paris";
+
+           // dbContext.Customers.Add(Etoo);
+
+          //  dbContext.SaveChanges();
+
+
+
+            //Supprimer ce Customer
+
+
+            var supprime = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "AAAAB");
+
+            if(supprime != null)
+            {
+               // dbContext.Customers.Remove(supprime);
+                //dbContext.SaveChanges();
+            }
+
+
+            //Que se passe t- il si vous essayez de supprimer ALFKI ? Pourquoi ?
+
+            var supprimeALFKI = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "ALFKI");
+
+            if (supprimeALFKI != null)
+            {
+                dbContext.Customers.Remove(supprimeALFKI);
+                dbContext.SaveChanges();
             }
         }
     }
