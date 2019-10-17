@@ -11,7 +11,7 @@ namespace entityFramework
         static void Main(string[] args)
         {
             NorthwindEntities dbContext = new NorthwindEntities();
-           var a = dbContext.Customers.ToList();
+            var a = dbContext.Customers.ToList();
 
             /*var custom = a.Where(f => f.Country == "France");
 
@@ -47,67 +47,110 @@ namespace entityFramework
              puis creation et ensuite actualisé sur mon IDE dur le fichier .edmx 
              de entity et apres METTRE A JOUR LE MODELE puis sur terminer et la colonne est ajouter */
 
-           /* var nouv = dbContext.Customers.Where(f => f.Email != null);
+            /* var nouv = dbContext.Customers.Where(f => f.Email != null);
 
-            int m = 1;
-            foreach (var o in nouv)
-            {
-                //Console.WriteLine(m + " "+o.ContactName);
+             int m = 1;
+             foreach (var o in nouv)
+             {
+                 //Console.WriteLine(m + " "+o.ContactName);
 
-                m++;
-            }
+                 m++;
+             }
 
-            //Assigner un email au Customer HILAA
+             //Assigner un email au Customer HILAA
 
-            var Updat = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "HILAA");
-            //Updat.Email = "GUY@Yaoo.de";
-           // dbContext.SaveChanges();
+             var Updat = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "HILAA");
+             //Updat.Email = "GUY@Yaoo.de";
+            // dbContext.SaveChanges();
 
-            //Insérer un nouveau Customer
+             //Insérer un nouveau Customer
 
-            var Etoo = new Customer();
-            Etoo.CustomerID = "AAAAB";
-            Etoo.CompanyName = "Fils"; // toujours remplir les champs not null
-            Etoo.Address = "Paris";
+             var Etoo = new Customer();
+             Etoo.CustomerID = "AAAAB";
+             Etoo.CompanyName = "Fils"; // toujours remplir les champs not null
+             Etoo.Address = "Paris";
 
-           // dbContext.Customers.Add(Etoo);
+            // dbContext.Customers.Add(Etoo);
 
-          //  dbContext.SaveChanges();
-
-
-
-            //Supprimer ce Customer
+           //  dbContext.SaveChanges();
 
 
-            var supprime = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "AAAAB");
 
-            if(supprime != null)
-            {
-               // dbContext.Customers.Remove(supprime);
-                //dbContext.SaveChanges();
-            }
+             //Supprimer ce Customer
 
 
-            //Que se passe t- il si vous essayez de supprimer ALFKI ? Pourquoi ?
+             var supprime = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "AAAAB");
 
-            var supprimeALFKI = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "ALFKI");
+             if(supprime != null)
+             {
+                // dbContext.Customers.Remove(supprime);
+                 //dbContext.SaveChanges();
+             }
 
-            if (supprimeALFKI != null)
-            {
-            //    dbContext.Customers.Remove(supprimeALFKI);
-              //  dbContext.SaveChanges();
-            }*/
+
+             //Que se passe t- il si vous essayez de supprimer ALFKI ? Pourquoi ?
+
+             var supprimeALFKI = dbContext.Customers.FirstOrDefault(f => f.CustomerID == "ALFKI");
+
+             if (supprimeALFKI != null)
+             {
+             //    dbContext.Customers.Remove(supprimeALFKI);
+               //  dbContext.SaveChanges();
+             }*/
 
 
             //test de la méthode lind to Sql
-            adoToLinq adoToLinq = new adoToLinq();
-           var ad= adoToLinq.GetCustomers("Patricio Simpson", "Cerrito 333");
-            foreach(var sz in ad)
-            {
-                Console.WriteLine(sz.Region +" "+sz.ContactTitle);
-            }
-            
+            /*  adoToLinq adoToLinq = new adoToLinq();
+             var ad= adoToLinq.GetCustomers("Patricio Simpson", "Cerrito 333");
+              foreach(var sz in ad)
+              {
+                  Console.WriteLine(sz.Region +" "+sz.ContactTitle);
+              }*/
 
+
+            var list = from cust in dbContext.Customers
+                       join oder in dbContext.Orders on cust.CustomerID equals oder.CustomerID
+                       join oderdetail in dbContext.Order_Details on oder.OrderID equals oderdetail.OrderID
+                       select new
+                       {
+                           Unitprice = oderdetail.UnitPrice,
+                           ContactName = cust.ContactName,
+                           Quantity = oderdetail.Quantity
+                       };
+
+            foreach (var sz in list)
+            {
+                Console.WriteLine(sz.Unitprice + " " + sz.ContactName + " " + sz.Quantity);
+            }
+
+
+            /*var fullEntries = dbContext.tbl_EntryPoint
+    .Join(
+        dbContext.tbl_Entry,
+        entryPoint => entryPoint.EID,
+        entry => entry.EID,
+        (entryPoint, entry) => new { entryPoint, entry }
+    )
+    .Join(
+        dbContext.tbl_Title,
+        combinedEntry => combinedEntry.entry.TID,
+        title => title.TID,
+        (combinedEntry, title) => new
+        {
+            UID = combinedEntry.entry.OwnerUID,
+            TID = combinedEntry.entry.TID,
+            EID = combinedEntry.entryPoint.EID,
+            Title = title.Title*/
+        }
+    )
+
+            var list2 = dbContext.Customers
+                join(
+                    dbContext.Orders,
+                    entrer => entrer.OrderID
+
+                    )
+            }
         }
     }
 }
