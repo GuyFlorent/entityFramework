@@ -13,7 +13,7 @@ namespace entityFramework
             NorthwindEntities dbContext = new NorthwindEntities();
            var a = dbContext.Customers.ToList();
 
-            var custom = a.Where(f => f.Country == "France");
+            /*var custom = a.Where(f => f.Country == "France");
 
             foreach(var b in custom)
             {
@@ -27,7 +27,7 @@ namespace entityFramework
 
             var l = dbContext.Orders.Where(f => f.CustomerID == person.CustomerID);
             int i = 1;
-            foreach (var c in l)
+           // foreach (var c in l)
             {
                 //Console.WriteLine(i + " "+c.OrderID+" "+c.ShippedDate);
 
@@ -36,7 +36,7 @@ namespace entityFramework
 
             var listeOrders = dbContext.Customers.FirstOrDefault(f => f.ContactName == "Maria Anders").Orders.ToList();
             int j = 1;
-            foreach (var d in listeOrders)
+            //foreach (var d in listeOrders)
             {
                // Console.WriteLine(j + " " + d.OrderID + " " + d.ShippedDate);
 
@@ -47,7 +47,7 @@ namespace entityFramework
              puis creation et ensuite actualisé sur mon IDE dur le fichier .edmx 
              de entity et apres METTRE A JOUR LE MODELE puis sur terminer et la colonne est ajouter */
 
-            var nouv = dbContext.Customers.Where(f => f.Email != null);
+           /* var nouv = dbContext.Customers.Where(f => f.Email != null);
 
             int m = 1;
             foreach (var o in nouv)
@@ -96,10 +96,16 @@ namespace entityFramework
             {
             //    dbContext.Customers.Remove(supprimeALFKI);
               //  dbContext.SaveChanges();
+            }*/
+
+
+            //test de la méthode lind to Sql
+            adoToLinq adoToLinq = new adoToLinq();
+           var ad= adoToLinq.GetCustomers("Patricio Simpson", "Cerrito 333");
+            foreach(var sz in ad)
+            {
+                Console.WriteLine(sz.Region +" "+sz.ContactTitle);
             }
-
-           
-
             
 
         }
