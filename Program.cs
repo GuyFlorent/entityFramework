@@ -94,9 +94,14 @@ namespace entityFramework
 
             if (supprimeALFKI != null)
             {
-                dbContext.Customers.Remove(supprimeALFKI);
-                dbContext.SaveChanges();
+            //    dbContext.Customers.Remove(supprimeALFKI);
+              //  dbContext.SaveChanges();
             }
+
+           
+
+            
+
         }
     }
 }

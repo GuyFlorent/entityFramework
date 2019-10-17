@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adoToLinq.cs" />
     <Compile Include="Alphabetical_list_of_product.cs">
       <DependentUpon>DbNorthWind.tt</DependentUpon>
     </Compile>
